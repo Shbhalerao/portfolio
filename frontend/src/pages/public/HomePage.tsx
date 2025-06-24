@@ -301,7 +301,7 @@ const HomePage: React.FC = () => {
       ref={collaborateRef}
       className={`w-full py-20 px-4 bg-gradient-to-r 
         from-pastel-purple to-pastel-pink 
-        text-dark text-center rounded-lg shadow-xl
+        text-dark text-center rounded-lg
         ${collaborateInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
         `}>
         <h3 className="text-4xl font-bold mb-4">Let's Work Together</h3>
