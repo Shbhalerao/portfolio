@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="text-center py-4">Loading footer content...</div>;
+  if (loading) return <div className="text-center py-4"></div>;
   if (error) return <div className="text-center py-4 text-red-500">{error}</div>;
 
   return (

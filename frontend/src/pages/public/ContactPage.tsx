@@ -6,6 +6,7 @@ import { IconContext } from 'react-icons';
 import { FaEnvelope, FaShareAlt, FaRegClock, FaPaperPlane, FaLink } from 'react-icons/fa';
 // Specific social media icons for brand colors
 import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram, FaMediumM } from 'react-icons/fa';
+import Loader from '../../components/Loader';
 
 
 const ContactPage: React.FC = () => {
@@ -17,7 +18,7 @@ const ContactPage: React.FC = () => {
   });
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [responseMessage, setResponseMessage] = useState<string>('');
-  const [contactEmail, setContactEmail] = useState<string>('john.doe@example.com'); // Placeholder email matching screenshot
+  const [contactEmail, setContactEmail] = useState<string>('shubham.bhalerao@outlook.com'); // Placeholder email matching screenshot
   const [socialLinks, setSocialLinks] = useState<ISocialLink[]>([]);
   const [loadingInitialData, setLoadingInitialData] = useState(true);
 
@@ -75,7 +76,7 @@ const ContactPage: React.FC = () => {
       }
   };
 
-  if (loadingInitialData) return <div className="text-center py-8 text-xl">Loading contact info...</div>;
+  if (loadingInitialData) return <Loader />;
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-50 text-text-dark">

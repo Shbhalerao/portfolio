@@ -6,6 +6,7 @@ import { format, parseISO, intervalToDuration } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa'; // Ensure FaBuilding is imported if used this way
+import Loader from '../../components/Loader';
 
 const ExperiencePage: React.FC = () => {
   const [experiences, setExperiences] = useState<IExperience[]>([]);
@@ -82,7 +83,7 @@ const ExperiencePage: React.FC = () => {
     return IconComponent ? <IconComponent /> : null;
   };
 
-  if (loading) return <div className="text-center py-8 text-xl">Loading professional experience...</div>;
+  if (loading) return <Loader />;;
   if (error) return <div className="text-center py-8 text-red-500 text-xl">{error}</div>;
 
   return (
