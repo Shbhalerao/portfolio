@@ -4,8 +4,8 @@
 const axios = require('axios');
 
 const API_URL = process.env.API_URL || 'http://localhost:5000/api';
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'sbshubham09';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'TommyDon@8295';
 
 const skills = [
   { name: 'Java', iconClass: 'FaJava' },

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { IProject, IHomepageContent } from '../../types';
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa'; // Ensure needed FaIcons are imported
+import Loader from '../../components/Loader';
 
 const ProjectsPage: React.FC = () => {
   const [projects, setProjects] = useState<IProject[]>([]);
@@ -42,7 +43,7 @@ const ProjectsPage: React.FC = () => {
     return { color };
   };
 
-  if (loading) return <div className="text-center py-8 text-xl">Loading projects...</div>;
+  if (loading) return <Loader />;
   if (error) return <div className="text-center py-8 text-red-500 text-xl">{error}</div>;
 
   return (
