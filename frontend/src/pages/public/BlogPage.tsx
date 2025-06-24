@@ -4,6 +4,7 @@ import api from '../../services/api';
 import { IArticle } from '../../types';
 import { FaPlus, FaMedium, FaRegClock, FaPaperPlane, FaExternalLinkAlt } from 'react-icons/fa'; // Corrected import from 'react-icons/fa'
 import { IconContext } from 'react-icons'; // Import IconContext for custom icon styling
+import Loader from '../../components/Loader';
 
 const BlogPage: React.FC = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
@@ -51,7 +52,7 @@ const BlogPage: React.FC = () => {
     return `${minutes} min read`;
   };
 
-  if (loading) return <div className="text-center py-8 text-xl">Loading articles...</div>;
+  if (loading) return <Loader />;;
   if (error) return <div className="text-center py-8 text-red-500 text-xl">{error}</div>;
 
   return (

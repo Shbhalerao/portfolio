@@ -9,6 +9,7 @@ import * as FaIcons from 'react-icons/fa'; // Using Font Awesome 5 for consisten
 import {
   FaJava, FaLeaf, FaReact, FaJsSquare, FaDatabase, FaAws
 } from 'react-icons/fa'; // Import specific icons
+import Loader from '../../components/Loader';
 
 const HomePage: React.FC = () => {
   const [homepageContent, setHomepageContent] = useState<IHomepageContent | null>(null);
@@ -91,7 +92,7 @@ const HomePage: React.FC = () => {
   };
 
 
-  if (loading) return <div className="text-center py-8 text-xl">Loading your awesome portfolio...</div>;
+  if (loading) return <Loader />;
   if (error) return <div className="text-center py-8 text-red-500 text-xl">{error}</div>;
   if (!homepageContent) return <div className="text-center py-8 text-xl">No homepage content available.</div>;
 
