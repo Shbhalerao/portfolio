@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className="bg-white shadow-sm p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
-        <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-pastel-purple transition duration-300">
+        <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition duration-300">
           Shubham
         </Link>
 
@@ -74,13 +74,13 @@ const NavBar: React.FC = () => {
               </li>
             ))}
             <li>
-                <Link
+                {/* <Link
                     to="/admin/login"
                     className="block px-4 py-2 text-xl text-pastel-purple hover:bg-gray-100 transition duration-300 w-full text-center mt-4 border-t pt-4 border-gray-200"
                     onClick={toggleMenu}
                 >
                     Admin Login
-                </Link>
+                </Link> */}
             </li>
           </ul>
         </div>
