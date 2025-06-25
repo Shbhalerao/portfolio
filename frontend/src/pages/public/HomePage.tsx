@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
   const achievementCards = [
     { icon: <FaIcons.FaBriefcase />, text: '5+ Years', subText: 'Professional Experience', circleBg: 'bg-soft-blue', iconColor: 'text-blue-600' },
     { icon: <FaIcons.FaCheckCircle />, text: '20+ Projects', subText: 'Successfully Delivered', circleBg: 'bg-soft-green', iconColor: 'text-green-600' },
-    { icon: <FaIcons.FaUsers />, text: 'Team Player', subText: 'Collaborative Mindset', circleBg: 'bg-pastel-purple', iconColor: 'text-purple-600' },
+    { icon: <FaIcons.FaUsers />, text: 'Collaborative', subText: 'Team Player', circleBg: 'bg-pastel-purple', iconColor: 'text-purple-600' },
   ];
 
   // Colors array for project cards based on screenshot and user's "soft" colors
@@ -121,20 +121,20 @@ const HomePage: React.FC = () => {
       <section
       ref={heroRef}
        className={`relative w-full py-16 md:py-24 px-4 
-        bg-gradient-to-br from-pastel-blue 
-        via-white to-pastel-purple overflow-hidden shadow-sm
-        ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-20'}`
-       }>
-        <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 max-w-6xl">
+        bg-gradient-to-br from-pastel-light-blue 
+        via-pastel-yellow to-vibrant-purple overflow-hidden shadow-sm
+        ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-20'}
+        hero-gradient-pulsate`}>
+        <div className="container mx-auto flex flex-col items-center justify-center gap-12 max-w-6xl">
           {/* Text Content */}
-          <div className="flex-1 text-center md:text-left z-10">
+          <div className="flex-1 text-center z-10">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-3 animate-fade-in-down">
               Hi, I'm <span className="text-blue-600">{homepageContent.name}</span>
             </h1>
             <h2 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-700 mb-6 animate-fade-in-up delay-100">
               {homepageContent.headline}
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/projects"
                 className="inline-flex items-center justify-center bg-black text-text-light py-3 px-8 rounded-lg text-lg font-semibold hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-md"
@@ -150,25 +150,28 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Profile Image with Decorative Elements */}
-          <div className="relative flex-shrink-0 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center z-10 mr-0 md:mr-12">
-            {/* Background Circle */}
-            <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink to-pastel-purple rounded-full transform scale-110 shadow-xl opacity-90 animate-pulse-light"></div>
-            {/* Profile Image */}
-            <img
-              src={homepageContent.profileImageUrl || 'https://placehold.co/288x288/EEEEEE/333333?text=Profile'}
-              alt="Profile"
-              className="relative w-full h-full rounded-full object-cover border-4 border-white z-20"
-            />
-            {/* Code Icon */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-full p-3 shadow-lg z-30 transform rotate-6 hover:rotate-12 transition-transform duration-300">
-              <FaIcons.FaCode className="text-3xl text-blue-600" />
+          {/* Floating Objects - Tech Icons */}
+          <IconContext.Provider value={{ className: 'pointer-events-none' }}>
+            {/* Object 1 (Code) */}
+            <div className="absolute top-[10%] left-[15%] text-vibrant-purple text-5xl opacity-60 animate-float-1">
+              <FaIcons.FaCode />
             </div>
-             {/* Plus Icon - As seen in the top right of the image hero section */}
-            <div className="absolute top-0 right-0 bg-white rounded-full p-2 shadow-lg z-30 transform translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform duration-300">
-                <FaIcons.FaPlus className="text-xl text-green-600" />
+            {/* Object 2 (Laptop Code) */}
+            <div className="absolute bottom-[20%] right-[10%] text-sunshine-yellow text-4xl opacity-70 animate-float-2">
+              <FaIcons.FaPencilAlt />
             </div>
-          </div>
+            {/* Object 3 (Cloud) */}
+            <div className="absolute top-[50%] left-[calc(50%+100px)] text-pastel-light-blue text-6xl opacity-50 animate-float-3">
+              <FaIcons.FaCloud />
+            </div>
+            {/* New Object 4 (Terminal) */}
+            <div className="absolute top-[30%] right-[25%] text-green-300 text-4xl opacity-65 animate-float-4">
+              <FaIcons.FaBook />
+            </div>
+            {/* New Object 5 (Database) */}
+      
+          </IconContext.Provider>
+
         </div>
       </section>
 
