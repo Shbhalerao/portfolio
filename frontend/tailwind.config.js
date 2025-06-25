@@ -32,6 +32,10 @@ module.exports = {
         'skill-postgresql': '#336791', // Dark blue/purple
         'skill-aws': '#FF9900',    
         'skill-docker': '#0db7ed',      // AWS Orange
+
+        // --- NEW VIBRANT COLORS FOR GRADIENT PULSATION ---
+        'vibrant-purple': '#C6B6F7',   // A distinct, brighter purple
+        'sunshine-yellow': '#FFD700', // A bright, golden yellow
       }
     },
   },

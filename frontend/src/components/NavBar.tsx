@@ -65,7 +65,7 @@ const NavBar: React.FC = () => {
                 <Link
                   to={link.path}
                   className={`block px-4 py-2 text-xl text-gray-700 hover:bg-gray-100 transition duration-300 w-full text-center
-                    ${location.pathname === link.path ? 'text-pastel-purple font-semibold' : ''}
+                    ${location.pathname === link.path ? 'text-blue-600 font-semibold' : ''}
                   `}
                   onClick={toggleMenu} // Close menu on link click
                 >
