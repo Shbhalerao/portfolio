@@ -5,6 +5,8 @@ import { IArticle } from '../../types';
 import { FaPlus, FaMedium, FaRegClock, FaPaperPlane, FaExternalLinkAlt } from 'react-icons/fa'; // Corrected import from 'react-icons/fa'
 import { IconContext } from 'react-icons'; // Import IconContext for custom icon styling
 import Loader from '../../components/Loader';
+// Import new icons for floating objects
+import { FaPencilAlt, FaBookOpen, FaNewspaper, FaFeatherAlt } from 'react-icons/fa';
 
 const BlogPage: React.FC = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
@@ -57,12 +59,35 @@ const BlogPage: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-white text-text-dark">
-      {/* Page Header - Background changed to gradient */}
-      <section className="relative w-full text-center py-12 px-4 bg-gradient-to-br from-pastel-blue to-pastel-purple shadow-sm">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Blog</h1>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+      {/* Page Header - Background changed to vibrant pulsating gradient */}
+      <section className="relative w-full text-center py-12 px-4 
+        bg-gradient-to-br from-pastel-light-blue 
+        via-pastel-yellow to-vibrant-purple shadow-sm hero-gradient-pulsate">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 z-10 relative">Blog</h1>
+        <p className="text-lg text-gray-700 max-w-2xl mx-auto z-10 relative">
           Thoughts on software engineering, technology trends, and lessons learned from building scalable applications.
         </p>
+
+        {/* Floating Objects - Writing/Blogging Icons (4 icons) */}
+        <IconContext.Provider value={{ className: 'pointer-events-none' }}>
+          {/* Object 1 (Pencil) */}
+          <div className="absolute top-[15%] left-[10%] text-purple-300 text-4xl opacity-60 animate-float-1" style={{animationDelay: '0s'}}>
+            <FaPencilAlt />
+          </div>
+          {/* Object 2 (Open Book) */}
+          <div className="absolute bottom-[20%] right-[15%] text-green-300 text-5xl opacity-70 animate-float-2" style={{animationDelay: '1s'}}>
+            <FaBookOpen />
+          </div>
+          {/* Object 3 (Newspaper) */}
+          <div className="absolute top-[5%] right-[5%] text-blue-300 text-3xl opacity-50 animate-float-3" style={{animationDelay: '2s'}}>
+            <FaNewspaper />
+          </div>
+          {/* Object 4 (Feather Pen) */}
+          <div className="absolute bottom-[12%] left-[28%] text-sunshine-yellow text-4xl opacity-75 animate-float-4" style={{animationDelay: '3s'}}>
+            <FaFeatherAlt />
+          </div>
+        </IconContext.Provider>
+
       </section>
 
       {/* Blog Post Grid */}

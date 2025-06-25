@@ -94,6 +94,25 @@ const ExperiencePage: React.FC = () => {
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           A journey of innovation, significant growth, challenges, and technical expertise across various roles and technologies.
         </p>
+         {/* Floating Objects - Work-Related Icons (4 icons) */}
+        <IconContext.Provider value={{ className: 'pointer-events-none' }}>
+          {/* Object 1 (Briefcase) */}
+          <div className="absolute top-[10%] left-[10%] text-purple-300 text-5xl opacity-60 animate-float-1" style={{animationDelay: '0s'}}>
+            <FaIcons.FaBriefcase />
+          </div>
+          {/* Object 2 (Laptop Code) */}
+          <div className="absolute bottom-[15%] right-[10%] text-green-300 text-4xl opacity-70 animate-float-2" style={{animationDelay: '1s'}}>
+            <FaIcons.FaLaptopCode />
+          </div>
+          {/* Object 3 (Chart Line) */}
+          <div className="absolute top-[30%] right-[20%] text-blue-300 text-3xl opacity-50 animate-float-3" style={{animationDelay: '2s'}}>
+            <FaIcons.FaChartLine />
+          </div>
+          {/* Object 4 (Users Cog - Teamwork) */}
+          <div className="absolute bottom-[11%] left-[30%] text-sunshine-yellow text-4xl opacity-75 animate-float-4" style={{animationDelay: '3s'}}>
+            <FaIcons.FaUsersCog />
+          </div>
+        </IconContext.Provider>
       </section>
 
       {/* Experience Section - Now with separate cards per entry */}
