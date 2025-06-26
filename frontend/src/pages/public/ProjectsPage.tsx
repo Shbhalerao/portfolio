@@ -49,7 +49,8 @@ const ProjectsPage: React.FC = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-50 text-text-dark">
       {/* Page Header - Background changed to gradient */}
-      <section className="relative w-full text-center py-12 px-4 bg-gradient-to-br from-pastel-blue to-pastel-purple shadow-sm">
+      <section className="relative w-full text-center py-12 px-4 bg-gradient-to-br from-pastel-light-blue 
+        via-pastel-yellow to-vibrant-purple shadow-sm hero-gradient-pulsate">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">My Projects</h1>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           Explore my portfolio of fullstack applications, web solutions, and software projects built with modern technologies.

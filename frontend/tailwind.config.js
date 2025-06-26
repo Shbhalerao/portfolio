@@ -34,8 +34,11 @@ module.exports = {
         'skill-docker': '#0db7ed',      // AWS Orange
 
         // --- NEW VIBRANT COLORS FOR GRADIENT PULSATION ---
-        'vibrant-purple': '#C6B6F7',   // A distinct, brighter purple
+        'vibrant-purple': '#7B42F6',   // A distinct, brighter purple
         'sunshine-yellow': '#FFD700', // A bright, golden yellow
+
+        // --- NEW BACKGROUND COLOR FOR SKILLS SECTION (NOT USED IN HOMEPAGE.TSX AS PER REQUEST) ---
+        'dark-background': '#1A1A1A', // Dark background example
       }
     },
   },

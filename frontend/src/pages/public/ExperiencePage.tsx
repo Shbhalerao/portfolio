@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa'; // Ensure FaBuilding is imported if used this way
 import Loader from '../../components/Loader';
+import TechSphere from '../../components/TechSphere'; // Import TechSphere component
 
 const ExperiencePage: React.FC = () => {
   const [experiences, setExperiences] = useState<IExperience[]>([]);
@@ -69,6 +70,17 @@ const ExperiencePage: React.FC = () => {
     { name: 'Spring Boot', icon: <FaIcons.FaLeaf />, colorClass: 'text-skill-spring-boot' }, // Using FaLeaf for Spring
     { name: 'Databases', icon: <FaIcons.FaDatabase />, colorClass: 'text-skill-postgresql' }, // Using postgresql color for generic db
     { name: 'AWS', icon: <FaIcons.FaAws />, colorClass: 'text-skill-aws' },
+    { name: 'Node.js', icon: <FaIcons.FaNodeJs />, colorClass: 'text-skill-node' },
+    { name: 'Docker', icon: <FaIcons.FaDocker />, colorClass: 'text-skill-docker' },
+    { name: 'Git', icon: <FaIcons.FaGitAlt />, colorClass: 'text-skill-git' },
+    { name: 'HTML5', icon: <FaIcons.FaHtml5 />, colorClass: 'text-skill-html' },
+    { name: 'CSS3', icon: <FaIcons.FaCss3Alt />, colorClass: 'text-skill-css' },
+    { name: 'JavaScript', icon: <FaIcons.FaJsSquare />, colorClass: 'text-skill-js' },
+    { name: 'TypeScript', icon: <FaIcons.FaTypo3 />, colorClass: 'text-skill-ts' },
+    { name: 'Python', icon: <FaIcons.FaPython />, colorClass: 'text-skill-python' },
+    { name: 'PostgreSQL', icon: <FaIcons.FaDatabase />, colorClass: 'text-skill-postgresql' },
+    { name: 'MongoDB', icon: <FaIcons.Fa500Px />, colorClass: 'text-skill-mongodb' },
+
   ];
 
   const getIconComponent = (iconClass: string) => {
@@ -89,7 +101,8 @@ const ExperiencePage: React.FC = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-white text-text-dark">
       {/* Page Header - Background changed to gradient */}
-      <section className="relative w-full text-center py-12 px-4 bg-gradient-to-br from-pastel-blue to-pastel-purple shadow-sm">
+      <section className="relative w-full text-center py-12 px-4 bg-gradient-to-br from-pastel-light-blue 
+        via-pastel-yellow to-vibrant-purple shadow-sm hero-gradient-pulsate shadow-sm">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Professional Experience</h1>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           A journey of innovation, significant growth, challenges, and technical expertise across various roles and technologies.
@@ -177,23 +190,39 @@ const ExperiencePage: React.FC = () => {
       )}
 
       {/* Technical Expertise Section (Updated Styling) */}
-      <section className="w-full px-4 bg-gradient-to-br from-pastel-blue to-soft-green py-16 rounded-lg shadow-inner"> {/* New gradient background */}
-        <h3 className="text-4xl font-bold text-center text-text-dark mb-4">Technical Expertise</h3>
-        <p className="text-lg text-center text-gray-700 mb-10">
-          Technologies and skills acquired throughout my journey {/* Updated subheading text */}
+      <section className="w-full px-4 bg-gradient-to-br from-pastel-blue to-soft-green py-10 rounded-lg shadow-inner">
+        <h3 className="text-4xl font-bold text-center text-text-dark mb-2">Technical Expertise</h3>
+        <p className="text-lg text-center text-gray-700 mb-6">
+          Technologies and skills acquired throughout my journey
         </p>
-        <div className="flex flex-wrap justify-center gap-8">
-          {technicalSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 group min-w-[120px]" // Removed border
-            >
-              <IconContext.Provider value={{ className: `text-5xl ${skill.colorClass}` }}> {/* Apply brand color and correct size */}
-                {skill.icon}
-              </IconContext.Provider>
-              <p className="mt-3 text-xl font-medium text-text-dark">{skill.name}</p> {/* Removed hover color */}
+        <div className="container mx-auto flex flex-col items-center gap-6 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full items-center">
+            {/* Left Column: Skills Tags */}
+            <div className="flex flex-col items-start justify-center md:pr-6">
+              <div className="flex flex-wrap gap-2">
+                {technicalSkills.map((skill, index) => {
+                  const dotColors = [
+                    'bg-blue-500', 'bg-green-500', 'bg-red-500', 'bg-purple-500', 'bg-yellow-500', 'bg-pink-500', 'bg-teal-500',
+                  ];
+                  const dotColorClass = dotColors[index % dotColors.length];
+                  return (
+                    <div
+                      key={index}
+                      className={`flex items-center space-x-2 bg-white text-text-dark text-sm px-2.5 py-1 rounded-full font-medium whitespace-nowrap shadow-sm border border-gray-200`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${dotColorClass}`}></span>
+                      <span>{skill.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          ))}
+            {/* Right Column: Animated Icon Sphere (reuse TechSphere) */}
+            <div className="relative w-full aspect-square md:w-[240px] md:h-[240px] flex-shrink-0 mx-auto rounded-full overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full transform scale-110"></div>
+              <TechSphere />
+            </div>
+          </div>
         </div>
       </section>
 

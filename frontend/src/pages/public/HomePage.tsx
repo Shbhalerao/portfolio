@@ -10,6 +10,15 @@ import {
   FaJava, FaLeaf, FaReact, FaJsSquare, FaDatabase, FaAws
 } from 'react-icons/fa'; // Import specific icons
 import Loader from '../../components/Loader';
+// Import additional icons for floating objects (already done in previous steps)
+import TechSphere from '../../components/TechSphere';
+
+
+
+// Import the image directly from the new recommended location
+import skillsCloudImage from '../../assets/images/download.png';
+import TechSphereCSSOnly from '../../components/TechSphere';
+
 
 const HomePage: React.FC = () => {
   const [homepageContent, setHomepageContent] = useState<IHomepageContent | null>(null);
@@ -48,7 +57,7 @@ const HomePage: React.FC = () => {
         iconComponent = <FaJava />;
         colorClass = 'text-skill-java';
         break;
-      case 'spring boot': // Assuming you use a generic leaf for Spring Boot
+      case 'spring boot':
         iconComponent = <FaLeaf />;
         colorClass = 'text-skill-spring-boot';
         break;
@@ -57,11 +66,11 @@ const HomePage: React.FC = () => {
         colorClass = 'text-skill-react';
         break;
       case 'javascript':
-        iconComponent = <FaJsSquare />; // Font Awesome for JS Square
+        iconComponent = <FaJsSquare />;
         colorClass = 'text-skill-javascript';
         break;
-      case 'postgresql': // Assuming a database icon for PostgreSQL
-        iconComponent = <FaDatabase />;
+      case 'postgresql':
+        iconComponent = <FaIcons.FaDatabase />; // Keep using FaDatabase if needed elsewhere, otherwise FaDatabaseIcon
         colorClass = 'text-skill-postgresql';
         break;
       case 'aws':
@@ -73,8 +82,7 @@ const HomePage: React.FC = () => {
         colorClass = 'text-skill-docker';
         break;
       default:
-        // Fallback if no specific icon or color is mapped
-        iconComponent = <FaIcons.FaCode />;
+        iconComponent = <FaIcons.FaCode />; // Generic code icon for others
         colorClass = 'text-gray-700';
     }
     return { iconComponent, colorClass };
@@ -98,9 +106,9 @@ const HomePage: React.FC = () => {
 
   // Modified achievementCards array for new styling
   const achievementCards = [
-    { icon: <FaIcons.FaBriefcase />, text: '5+ Years', subText: 'Professional Experience', circleBg: 'bg-soft-blue', iconColor: 'text-blue-600' },
-    { icon: <FaIcons.FaCheckCircle />, text: '20+ Projects', subText: 'Successfully Delivered', circleBg: 'bg-soft-green', iconColor: 'text-green-600' },
-    { icon: <FaIcons.FaUsers />, text: 'Collaborative', subText: 'Team Player', circleBg: 'bg-pastel-purple', iconColor: 'text-purple-600' },
+    { icon: <FaIcons.FaBriefcase />, text: '4+ Years', subText: 'Professional Experience', circleBg: 'bg-soft-blue', iconColor: 'text-blue-600' },
+    { icon: <FaIcons.FaCode />, text: 'Clean Code', subText: 'Successfully Delivered Multiple Projects', circleBg: 'bg-soft-green', iconColor: 'text-green-600' },
+    { icon: <FaIcons.FaBinoculars />, text: 'Innovative', subText: 'Always Learning New Technologies', circleBg: 'bg-pastel-purple', iconColor: 'text-purple-600' },
   ];
 
   // Colors array for project cards based on screenshot and user's "soft" colors
@@ -113,7 +121,11 @@ const HomePage: React.FC = () => {
     return { color };
   };
 
-  
+  // Colors for the skill tag dots, cycling through some vibrant pastels
+  const dotColors = [
+    'bg-blue-500', 'bg-green-500', 'bg-red-500', 'bg-purple-500', 'bg-yellow-500', 'bg-pink-500', 'bg-teal-500',
+  ];
+
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-50 text-text-dark">
@@ -150,7 +162,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Floating Objects - Tech Icons */}
+          {/* Floating Objects - Tech Icons (background of hero) - These are for the *hero section*, not the skills section. */}
           <IconContext.Provider value={{ className: 'pointer-events-none' }}>
             {/* Object 1 (Code) */}
             <div className="absolute top-[10%] left-[15%] text-vibrant-purple text-5xl opacity-60 animate-float-1">
@@ -158,18 +170,20 @@ const HomePage: React.FC = () => {
             </div>
             {/* Object 2 (Laptop Code) */}
             <div className="absolute bottom-[20%] right-[10%] text-sunshine-yellow text-4xl opacity-70 animate-float-2">
-              <FaIcons.FaPencilAlt />
+              <FaIcons.FaLaptopCode />
             </div>
             {/* Object 3 (Cloud) */}
             <div className="absolute top-[50%] left-[calc(50%+100px)] text-pastel-light-blue text-6xl opacity-50 animate-float-3">
               <FaIcons.FaCloud />
             </div>
             {/* New Object 4 (Terminal) */}
-            <div className="absolute top-[30%] right-[25%] text-green-300 text-4xl opacity-65 animate-float-4">
-              <FaIcons.FaBook />
+            <div className="absolute top-[30%] right-[25%] text-pastel-green text-3xl opacity-65 animate-float-4">
+              <FaIcons.FaTerminal />
             </div>
             {/* New Object 5 (Database) */}
-      
+            <div className="absolute bottom-[10%] left-[5%] text-pastel-purple text-4xl opacity-75 animate-float-5">
+              <FaIcons.FaDatabase />
+            </div>
           </IconContext.Provider>
 
         </div>
@@ -186,56 +200,72 @@ const HomePage: React.FC = () => {
           {homepageContent.aboutText}
         </p>
         {/* Achievement Cards (Updated Styling) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="flex justify-center gap-2 max-w-2xl mx-auto">
           {achievementCards.map((card, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center p-4"
+              className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[90px]"
+              style={{ minWidth: 90 }}
             >
-              <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-4 ${card.circleBg}`}>
-                <IconContext.Provider value={{ className: `${card.iconColor} text-3xl` }}>
+              <span className={`w-7 h-7 flex items-center justify-center rounded-full ${card.circleBg} shadow`}>
+                <IconContext.Provider value={{ className: `${card.iconColor} text-base` }}>
                   {card.icon}
                 </IconContext.Provider>
-              </div>
-              <h4 className="text-xl font-bold text-text-dark mb-1">{card.text}</h4>
-              <p className="text-sm text-gray-600">{card.subText}</p>
+              </span>
+              <span className="flex flex-col items-start">
+                <span className="text-xs font-bold text-text-dark leading-tight">{card.text}</span>
+                <span className="text-[10px] text-gray-500 leading-tight">{card.subText}</span>
+              </span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured Skills Section (Background reverted) */}
-      <section 
-      ref={skillsRef}
-      className={`w-full px-4 bg-gray-100 
-      py-16 rounded-lg shadow-inner
-      ${skillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
-      `}> {/* Reverted background to original */}
-        <h3 className="text-4xl font-bold text-center text-text-dark mb-4">Featured Skills</h3>
-        <p className="text-lg text-center text-gray-700 mb-10">
-          Technologies I work with to build amazing applications
-        </p>
-        <div className="flex flex-wrap justify-center gap-6">
-            {homepageContent.featuredSkillIds && homepageContent.featuredSkillIds.length > 0 ? (
-              homepageContent.featuredSkillIds.map((skill: ISkill) => {
-                const { iconComponent, colorClass } = getSkillIconAndColor(skill.name);
-                return (
-                  <div
-                    key={skill._id}
-                    className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 group" // Removed border
-                  >
-                    <IconContext.Provider value={{ className: `${colorClass} text-5xl` }}>
-                      {iconComponent}
-                    </IconContext.Provider>
-                    <p className="mt-3 text-lg font-medium text-text-dark">{skill.name}</p>
-                  </div>
-                );
-              })
-            ) : (
-              <span className="text-gray-400 text-center">No skills added yet.</span>
-            )}
+      {/* Featured Skills Section (Image Replication) */}
+     <section 
+  ref={skillsRef}
+  className={`w-full px-4 py-10 text-text-dark bg-gray-100
+  ${skillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
+  `}>
+  <div className="container mx-auto flex flex-col items-center gap-6 max-w-5xl">
+
+    {/* Heading centered at top */}
+    <h3 className="text-3xl font-bold text-black text-center mb-3">Technical Skills</h3>
+
+    {/* Two-column layout for pills and sphere */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full items-center">
+
+      {/* Left Column: Skills Tags */}
+      <div className="flex flex-col items-start justify-center md:pr-6">
+        <div className="flex flex-wrap gap-2">
+          {homepageContent.featuredSkillIds && homepageContent.featuredSkillIds.length > 0 ? (
+            homepageContent.featuredSkillIds.map((skill: ISkill, index: number) => {
+              const dotColorClass = dotColors[index % dotColors.length];
+              return (
+                <div
+                  key={skill._id}
+                  className={`flex items-center space-x-2 bg-white text-text-dark text-sm px-2.5 py-1 rounded-full font-medium whitespace-nowrap shadow-sm border border-gray-200`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${dotColorClass}`}></span>
+                  <span>{skill.name}</span>
+                </div>
+              );
+            })
+          ) : (
+            <span className="text-gray-600">No skills added yet.</span>
+          )}
         </div>
-      </section>
+      </div>
+
+      {/* Right Column: Animated Icon Sphere */}
+      <div className="relative w-full aspect-square md:w-[260px] md:h-[260px] flex-shrink-0 mx-auto rounded-full overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 rounded-full transform scale-110"></div>
+        <TechSphere />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Featured Projects Section */}
       {homepageContent.featuredProjectIds && homepageContent.featuredProjectIds.length > 0 && (
@@ -265,7 +295,7 @@ const HomePage: React.FC = () => {
                         href={project.liveLink || project.repoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-gray-900 transition-colors duration-300 ml-4 flex-shrink-0"
+                        className="inline-flex items-center text-gray-500 hover:text-gray-900 transition-colors duration-300 ml-4 flex-shrink-0"
                       >
                         <FaIcons.FaExternalLinkAlt size={16} />
                       </a>
