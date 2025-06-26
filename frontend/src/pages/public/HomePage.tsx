@@ -199,50 +199,47 @@ const HomePage: React.FC = () => {
         <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-12">
           {homepageContent.aboutText}
         </p>
-        {/* Achievement Cards (Updated Styling) */}
+        {/* Achievement Cards (Responsive: stacked for small screens, row for md+) */}
         <div className="w-full max-w-xs mx-auto">
-          <div className="flex justify-between gap-2">
-            {/* First row: 4+ Years and Innovative */}
-            <div className="flex-1">
-              <div className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[90px] max-w-xs w-full mx-auto">
-                <span className={`w-7 h-7 flex items-center justify-center rounded-full ${achievementCards[0].circleBg} shadow`}>
-                  <IconContext.Provider value={{ className: `${achievementCards[0].iconColor} text-base` }}>
-                    {achievementCards[0].icon}
+          {/* Mobile: one per line, uniform size */}
+          <div className="block md:hidden w-full space-y-2">
+            {[0, 2, 1].map((i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 w-full min-w-0"
+                style={{ minWidth: 0 }}
+              >
+                <span className={`w-7 h-7 flex items-center justify-center rounded-full ${achievementCards[i].circleBg} shadow`}>
+                  <IconContext.Provider value={{ className: `${achievementCards[i].iconColor} text-base` }}>
+                    {achievementCards[i].icon}
                   </IconContext.Provider>
                 </span>
                 <span className="flex flex-col items-start">
-                  <span className="text-xs font-bold text-text-dark leading-tight">{achievementCards[0].text}</span>
-                  <span className="text-[10px] text-gray-500 leading-tight">{achievementCards[0].subText}</span>
+                  <span className="text-xs font-bold text-text-dark leading-tight">{achievementCards[i].text}</span>
+                  <span className="text-[10px] text-gray-500 leading-tight">{achievementCards[i].subText}</span>
                 </span>
               </div>
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[90px] max-w-xs w-full mx-auto">
-                <span className={`w-7 h-7 flex items-center justify-center rounded-full ${achievementCards[2].circleBg} shadow`}>
-                  <IconContext.Provider value={{ className: `${achievementCards[2].iconColor} text-base` }}>
-                    {achievementCards[2].icon}
-                  </IconContext.Provider>
-                </span>
-                <span className="flex flex-col items-start">
-                  <span className="text-xs font-bold text-text-dark leading-tight">{achievementCards[2].text}</span>
-                  <span className="text-[10px] text-gray-500 leading-tight">{achievementCards[2].subText}</span>
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
-          {/* Second row: Clean Code centered */}
-          <div className="flex justify-center mt-2">
-            <div className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[90px] max-w-xs w-full mx-auto">
-              <span className={`w-7 h-7 flex items-center justify-center rounded-full ${achievementCards[1].circleBg} shadow`}>
-                <IconContext.Provider value={{ className: `${achievementCards[1].iconColor} text-base` }}>
-                  {achievementCards[1].icon}
-                </IconContext.Provider>
-              </span>
-              <span className="flex flex-col items-start">
-                <span className="text-xs font-bold text-text-dark leading-tight">{achievementCards[1].text}</span>
-                <span className="text-[10px] text-gray-500 leading-tight">{achievementCards[1].subText}</span>
-              </span>
-            </div>
+          {/* md+: all in a row */}
+          <div className="hidden md:flex justify-center gap-2 w-full">
+            {achievementCards.map((card, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 bg-white/80 border border-gray-200 rounded-full px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[90px] max-w-xs w-full md:w-auto"
+                style={{ minWidth: 240 }}
+              >
+                <span className={`w-7 h-7 flex items-center justify-center rounded-full ${card.circleBg} shadow`}>
+                  <IconContext.Provider value={{ className: `${card.iconColor} text-base` }}>
+                    {card.icon}
+                  </IconContext.Provider>
+                </span>
+                <span className="flex flex-col items-start">
+                  <span className="text-xs font-bold text-text-dark leading-tight">{card.text}</span>
+                  <span className="text-[10px] text-gray-500 leading-tight">{card.subText}</span>
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
