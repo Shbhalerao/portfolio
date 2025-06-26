@@ -34,13 +34,12 @@ const NavBar: React.FC = () => {
               to={link.path}
               className={`text-lg transition duration-300 transform hover:scale-105 relative
                 ${location.pathname === link.path
-                  ? 'text-blue-600 font-semibold' // Active link styling
-                  : 'text-gray-700 hover:text-blue-600 hover:underline' /* Inactive link styling with hover underline */}
+                  ? 'text-blue-600 font-semibold' 
+                  : 'text-gray-700 hover:text-blue-600' }
                 ${link.name === 'Contact' ? 'font-semibold' : ''}
               `}
             >
               {link.name}
-              {/* Active page underline */}
               {location.pathname === link.path && (
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-[-4px] w-3/4 h-1 bg-blue-600 rounded-full"></span>
               )}
